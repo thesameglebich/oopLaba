@@ -1,0 +1,10 @@
+C:\Users\Пользователь\source\repos\ooptry3\ooptry3\bin\Debug\ooptry3.exe.config
+C:\Users\Пользователь\source\repos\ooptry3\ooptry3\bin\Debug\ooptry3.exe
+C:\Users\Пользователь\source\repos\ooptry3\ooptry3\bin\Debug\ooptry3.pdb
+C:\Users\Пользователь\source\repos\ooptry3\ooptry3\obj\Debug\ooptry3.csprojAssemblyReference.cache
+C:\Users\Пользователь\source\repos\ooptry3\ooptry3\obj\Debug\ooptry3.Form1.resources
+C:\Users\Пользователь\source\repos\ooptry3\ooptry3\obj\Debug\ooptry3.Properties.Resources.resources
+C:\Users\Пользователь\source\repos\ooptry3\ooptry3\obj\Debug\ooptry3.csproj.GenerateResource.cache
+C:\Users\Пользователь\source\repos\ooptry3\ooptry3\obj\Debug\ooptry3.csproj.CoreCompileInputs.cache
+C:\Users\Пользователь\source\repos\ooptry3\ooptry3\obj\Debug\ooptry3.exe
+C:\Users\Пользователь\source\repos\ooptry3\ooptry3\obj\Debug\ooptry3.pdb
