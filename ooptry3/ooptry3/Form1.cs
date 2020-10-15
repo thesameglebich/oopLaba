@@ -10,122 +10,86 @@ using System.Windows.Forms;
 
 namespace ooptry3
 {
+   
     public partial class Form1 : Form
     {
-        private Graphics graphics;
-        private int resolution;
-        private bool[,] field;
-        private int rows;
-        private int columns;
+        public Graphics graphics;
+        public int resolution;
+        public Runner runx;
+        public int con = 0;
         public Form1()
         {
             InitializeComponent();
         }
+
+     /*   public void DrawMap()
+        {
+            pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            graphics = Graphics.FromImage(pictureBox1.Image);
+        }*/
+
         private void StartGame()
         {
             if (timer1.Enabled)
                 return;
             nudResolution.Enabled = false;
             nudDensity.Enabled = false;
+            runx = new Runner();
+            runx.InitializeValue();
             resolution = (int)nudResolution.Value;
-            rows = pictureBox1.Height / resolution;
-            columns = pictureBox1.Width / resolution;
-            field = new bool[columns, rows];
-            Random random = new Random();
-            for (int i = 0; i < columns; i++)
-            {
-                for (int j = 0; j < rows; j++)
-                {
-                    field[i, j] = random.Next((int)nudDensity.Value) == 0;
-                }
-            }
-
-
+            runx.rows= pictureBox1.Height / resolution;
+            runx.columns= pictureBox1.Width /resolution;
             pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             graphics = Graphics.FromImage(pictureBox1.Image);
+            runx.Createfirstfood();
+            runx.Createfirstgen();
             timer1.Start();
+            
+        }
 
+        private void DrawNewMap()
+        {
+            graphics.Clear(Color.Green);
+            for (int i = 0; i < runx.countofp; i++)
+            {
+                graphics.FillRectangle(Brushes.Black, runx.populations[i].x * resolution, runx.populations[i].y * resolution, resolution, resolution);
+                graphics.FillRectangle(Brushes.Blue, runx.food2[i].x * resolution, runx.food2[i].y * resolution, resolution, resolution);
+            }
+            
+            pictureBox1.Refresh();
 
         }
 
         private void NextGen()
         {
-            var pole = new bool[columns, rows];
-
-            graphics.Clear(Color.Green);
+            /*
+            DrawNewMap();
+            runx.DecideToMove();*/
             Random rand = new Random();
-            for (int i = 0; i < columns; i++)
-            {   
-                for (int j = 0; j < rows; j++)
-                { 
-                    if (field[i, j])
+            graphics.Clear(Color.Green);
+            for (int i = 0; i < runx.countofp; i++)
+            {
+                int g = rand.Next(4);
+                runx.populations[i].health--;
+                runx.Checkforit(runx.populations[i]);
+                graphics.FillRectangle(Brushes.Black, runx.populations[i].x * resolution, runx.populations[i].y * resolution, resolution, resolution);
+                graphics.FillRectangle(Brushes.Blue, runx.food2[i].x * resolution, runx.food2[i].y * resolution, resolution, resolution);
+                if (runx.populations[i].health < 400)
+                {
+                    if (runx.populations[i].found == false)
                     {
-                        graphics.FillRectangle(Brushes.Black, i * resolution, j * resolution, resolution, resolution);
+                        runx.populations[i].FindClose(runx);
+                        runx.populations[i].found = true;
                     }
+                    runx.populations[i].Idontwannadie();
 
-                   
-                   // while (!flagmain)
-                   // {
-                        int v = rand.Next(4);
-                        int num = v;
-                        var flag = field[i, j];
+                }
+                else
+                {
 
-                        if ((num == 0) && flag)// && ())
-                        {
-                        if (j - 1 >= 0)
-                        {
-
-                            if ((!pole[i, j - 1]))
-                            {
-                                pole[i, j - 1] = true;
-
-                            }
-                            else pole[i, j] = true;
-
-                        }
-                        else pole[i,j]=true;
-
-                        }
-
-                        if ((num == 1) && flag)// && ())
-                        {
-                        if (j + 1 < rows)
-                        {
-                            if ((!pole[i, j + 1]))
-                                pole[i, j + 1] = true;
-                            else pole[i, j] = true;
-                        }
-                        else pole[i, j] = true;
-                           
-                        }
-                        if ((num == 2) && flag)// && ())
-                        {
-                        if (i - 1 >= 0)
-                        {
-                            if ((!pole[i - 1, j]))
-                                pole[i - 1, j] = true;
-                            else pole[i, j] = true;
-                        }
-                        else pole[i, j]=true;
-                         
-                        }
-                        if ((num == 3) && flag)// && ())
-                        {
-                        if (i + 1 < columns)
-                        {
-                            if (!pole[i + 1, j])
-                                pole[i + 1, j] = true;
-                            else pole[i, j] = true;
-                        }
-                        else pole[i, j] = true;
-                            
-                        }
-                   // }
-
-                   
+                    runx.populations[i].Move(g);
                 }
             }
-            field = pole;
             pictureBox1.Refresh();
         }
 
@@ -148,5 +112,38 @@ namespace ooptry3
             nudDensity.Enabled = true;
             nudResolution.Enabled = true;
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (!timer1.Enabled)
+                return;
+            if (e.Button == MouseButtons.Left)
+            {
+                var x2 = e.Location.X / resolution;
+                var y2 = e.Location.Y / resolution;
+                for (int i = 0; i < runx.countofp; i++)
+                {
+                    if (x2 == runx.populations[i].x && y2 == runx.populations[i].y)
+                        label3.Text = $"health:{runx.populations[i].health}";
+                }
+            }
+        }
+    }
+
+    public class food
+    {
+        public int x, y, rows, columns;
+
+        public void Createeat(int rand1, int rand2)
+        {
+            this.x = rand1;
+            this.y = rand2;
+        }
+
     }
 }

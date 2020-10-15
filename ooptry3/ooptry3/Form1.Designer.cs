@@ -30,21 +30,22 @@
         {
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.nudResolution = new System.Windows.Forms.NumericUpDown();
-            this.nudDensity = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.strartb = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.stopb = new System.Windows.Forms.Button();
+            this.strartb = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.nudDensity = new System.Windows.Forms.NumericUpDown();
+            this.nudResolution = new System.Windows.Forms.NumericUpDown();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudResolution)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDensity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudResolution)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -58,6 +59,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label3);
             this.splitContainer1.Panel1.Controls.Add(this.stopb);
             this.splitContainer1.Panel1.Controls.Add(this.strartb);
             this.splitContainer1.Panel1.Controls.Add(this.label2);
@@ -72,14 +74,67 @@
             this.splitContainer1.SplitterDistance = 203;
             this.splitContainer1.TabIndex = 0;
             // 
-            // pictureBox1
+            // label3
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1094, 558);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(24, 221);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(172, 36);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "STATUS for this point\r\n\r\n";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // stopb
+            // 
+            this.stopb.Location = new System.Drawing.Point(77, 159);
+            this.stopb.Name = "stopb";
+            this.stopb.Size = new System.Drawing.Size(75, 23);
+            this.stopb.TabIndex = 5;
+            this.stopb.Text = "stop";
+            this.stopb.UseVisualStyleBackColor = true;
+            this.stopb.Click += new System.EventHandler(this.stopb_Click);
+            // 
+            // strartb
+            // 
+            this.strartb.Location = new System.Drawing.Point(77, 71);
+            this.strartb.Name = "strartb";
+            this.strartb.Size = new System.Drawing.Size(75, 23);
+            this.strartb.TabIndex = 4;
+            this.strartb.Text = "start";
+            this.strartb.UseVisualStyleBackColor = true;
+            this.strartb.Click += new System.EventHandler(this.strartb_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(63, 99);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Density";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(60, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Resolution";
+            // 
+            // nudDensity
+            // 
+            this.nudDensity.Location = new System.Drawing.Point(48, 118);
+            this.nudDensity.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.nudDensity.Name = "nudDensity";
+            this.nudDensity.Size = new System.Drawing.Size(120, 20);
+            this.nudDensity.TabIndex = 1;
+            this.nudDensity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // nudResolution
             // 
@@ -104,56 +159,15 @@
             0,
             0});
             // 
-            // nudDensity
+            // pictureBox1
             // 
-            this.nudDensity.Location = new System.Drawing.Point(48, 118);
-            this.nudDensity.Maximum = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
-            this.nudDensity.Name = "nudDensity";
-            this.nudDensity.Size = new System.Drawing.Size(120, 20);
-            this.nudDensity.TabIndex = 1;
-            this.nudDensity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(60, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Resolution";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(63, 99);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Density";
-            // 
-            // strartb
-            // 
-            this.strartb.Location = new System.Drawing.Point(77, 71);
-            this.strartb.Name = "strartb";
-            this.strartb.Size = new System.Drawing.Size(75, 23);
-            this.strartb.TabIndex = 4;
-            this.strartb.Text = "start";
-            this.strartb.UseVisualStyleBackColor = true;
-            this.strartb.Click += new System.EventHandler(this.strartb_Click);
-            // 
-            // stopb
-            // 
-            this.stopb.Location = new System.Drawing.Point(77, 159);
-            this.stopb.Name = "stopb";
-            this.stopb.Size = new System.Drawing.Size(75, 23);
-            this.stopb.TabIndex = 5;
-            this.stopb.Text = "stop";
-            this.stopb.UseVisualStyleBackColor = true;
-            this.stopb.Click += new System.EventHandler(this.stopb_Click);
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1094, 558);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             // 
             // timer1
             // 
@@ -173,9 +187,9 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudResolution)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDensity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudResolution)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -191,6 +205,7 @@
         private System.Windows.Forms.NumericUpDown nudResolution;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label3;
     }
 }
 
