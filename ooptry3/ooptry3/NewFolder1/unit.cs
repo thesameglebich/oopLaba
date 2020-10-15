@@ -13,7 +13,6 @@ namespace ooptry3
         public int closeX, closeY;
         public bool found = false;
 
-   
         public void Move(int num)
         {
 
@@ -56,16 +55,16 @@ namespace ooptry3
                 this.x = this.x + 1;
         }
 
-        public void FindClose(Runner runx)
+        public void FindClose(eat[] food, int leng)
         {
             int min = 1000000000;
-            for (int i = 0; i < runx.countfood; i++)
+            for (int i = 0; i < leng; i++)
             {
-                if (((this.x - runx.food2[i].x) * (this.x - runx.food2[i].x) + (this.y - runx.food2[i].y) * (this.y - runx.food2[i].y)) < min)
+                if (((this.x - food[i].x) * (this.x - food[i].x) + (this.y - food[i].y) * (this.y - food[i].y)) < min)
                 {
-                    min = (this.x - runx.food2[i].x) * (this.x - runx.food2[i].x) + (this.y - runx.food2[i].y) * (this.y - runx.food2[i].y);
-                    this.closeX = runx.food2[i].x;
-                    this.closeY = runx.food2[i].y;
+                    min = (this.x - food[i].x) * (this.x - food[i].x) + (this.y - food[i].y) * (this.y - food[i].y);
+                    this.closeX = food[i].x;
+                    this.closeY = food[i].y;
                 }
 
             }
@@ -95,7 +94,40 @@ namespace ooptry3
 
         }
 
-  
-    }
+        public void DecidToMove(eat[] food,int leng,int g)
+        {
 
+            if (this.health < 400)
+            {
+                if (this.found == false)
+                {
+                    this.FindClose(food, leng);
+                    this.found = true;
+                }
+                this.Idontwannadie();
+
+            }
+            else
+            {
+
+                this.Move(g);
+            }
+
+        }
+
+        public void CheckForFood(eat[] food, int countfood)
+        {
+            Random rand = new Random();
+            for (int i = 0; i < countfood; i++)
+            {
+                if (this.x == food[i].x && this.y == food[i].y && this.health != 1000)
+                {
+                    this.health = 1000;
+                    food[i].Createeat(rand.Next(this.columns), rand.Next(this.rows));
+                }
+            }
+        }
+
+
+    }
 }
