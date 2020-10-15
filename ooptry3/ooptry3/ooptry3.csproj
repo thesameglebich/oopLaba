@@ -53,6 +53,8 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="NewFolder1\food.cs" />
+    <Compile Include="NewFolder1\plants.cs" />
+    <Compile Include="NewFolder1\population.cs" />
     <Compile Include="NewFolder1\runner.cs" />
     <Compile Include="NewFolder1\unit.cs" />
     <Compile Include="Program.cs" />
