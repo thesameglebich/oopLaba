@@ -18,7 +18,7 @@ namespace ooptry3
        
         public int rows;
         public int columns;
-
+        public int sch = 1;
 
         public Form1()
         {
@@ -27,14 +27,18 @@ namespace ooptry3
         }
 
         Runner run;
+        
 
         public void InicializeValue()
         {
             resolution = (int)nudResolution.Value;
-            rows = pictureBox1.Height / resolution;
-            columns = pictureBox1.Width / resolution;
+            // rows = pictureBox1.Height / resolution;
+            //columns = pictureBox1.Width / resolution;
+            rows = 1000;
+            columns = 1000;
             pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             graphics = Graphics.FromImage(pictureBox1.Image);
+            
         }
         public void StartGame()
         {
@@ -47,18 +51,38 @@ namespace ooptry3
             
         }
 
-    
-        public void DrawMap(unit[] populations,eat[] food, int countofp)
-        {
-            graphics.Clear(Color.Green);
-            for (int i = 0; i < countofp; i++)
-            {
-               // graphics.FillRectangle(Brushes.Black, populations[i].x * resolution, populations[i].y * resolution, resolution, resolution);
-                graphics.FillRectangle(Brushes.Blue, food[i].x * resolution, food[i].y * resolution, resolution, resolution);
-            }
-            
-           
 
+        public void DrawMap(List<entity> popul)
+        {
+            if ((sch / 500) % 2 == 0)
+            {
+                graphics.Clear(Color.Green);
+            }
+            else graphics.Clear(Color.White);
+
+            for (int i = 0; i < popul.Count; i++)
+            {
+                if (popul[i].health < 200)
+                {
+                    if (popul[i] is herbivorous)
+                        graphics.FillRectangle(Brushes.Red, popul[i].x * resolution, popul[i].y * resolution, resolution, resolution);
+                    if (popul[i] is hunter)
+                        graphics.FillRectangle(Brushes.Gold, popul[i].x * resolution, popul[i].y * resolution, resolution, resolution);
+                    if (popul[i] is omnivorous)
+                        graphics.FillRectangle(Brushes.Brown, popul[i].x * resolution, popul[i].y * resolution, resolution, resolution);
+                }
+                else
+                {
+                    if (popul[i].pair == true)
+                        graphics.FillRectangle(Brushes.Violet, popul[i].x * resolution, popul[i].y * resolution, resolution, resolution);
+                    else if (!(popul[i] is eat)) graphics.FillRectangle(Brushes.Black, popul[i].x * resolution, popul[i].y * resolution, resolution, resolution);
+                    else graphics.FillRectangle(Brushes.Blue, popul[i].x * resolution, popul[i].y * resolution, resolution, resolution);
+                }
+                
+               
+            }
+
+       
             pictureBox1.Refresh();
         }
 
@@ -67,6 +91,7 @@ namespace ooptry3
         private void timer1_Tick(object sender, EventArgs e)
         {
             run.CreateNewWorld();
+            label4.Text = $"{sch++}";
         }
 
         private void strartb_Click(object sender, EventArgs e)
@@ -93,15 +118,45 @@ namespace ooptry3
             if (!timer1.Enabled)
                 return;
             if (e.Button == MouseButtons.Left)
+            {   
+                var x2 = e.Location.X / resolution;
+                var y2 = e.Location.Y / resolution;
+                for (int i = 0; i < run.population.popul.Count; i++)
+                {
+                    if (x2 == run.population.popul[i].x && y2 == run.population.popul[i].y)
+                    {
+                        // label3.Text = $"health:{run.population.popul[i].health} Pair:{run.population.popul[i].pair}";
+                        //label5.Text = $"timer:{run.population.popul[i].timer}";
+                        if (run.population.popul[i] is omnivorous)
+                        label3.Text = ((omnivorous)run.population.popul[i]).Information();
+                        if (run.population.popul[i] is herbivorous)
+                            label3.Text = ((herbivorous)run.population.popul[i]).Information();
+                        if (run.population.popul[i] is hunter)
+                            label3.Text = ((hunter)run.population.popul[i]).Information();
+                    }
+                }
+            }
+
+            if (e.Button == MouseButtons.Right)
             {
                 var x2 = e.Location.X / resolution;
                 var y2 = e.Location.Y / resolution;
-               /* for (int i = 0; i < countofp; i++)
-                {
-                    if (x2 == populations[i].x && y2 == populations[i].y)
-                        label3.Text = $"health:{populations[i].health}";
-                }*/
+                timer1.Stop();
+                run.population.DeleteLocation(x2, y2);
+                for (int i =x2-run.population.deadradius;i<x2+ run.population.deadradius; i++)
+                    for(int j = y2- run.population.deadradius; j <  y2+ run.population.deadradius; j++)
+                    {
+                        graphics.FillRectangle(Brushes.Orange, i * resolution, j * resolution, resolution, resolution);
+                    }
+                pictureBox1.Refresh();
+
+                timer1.Start();
             }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

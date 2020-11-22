@@ -8,3 +8,13 @@ C:\Users\Пользователь\source\repos\ooptry3\ooptry3\obj\Debug\ooptry3
 C:\Users\Пользователь\source\repos\ooptry3\ooptry3\obj\Debug\ooptry3.exe
 C:\Users\Пользователь\source\repos\ooptry3\ooptry3\obj\Debug\ooptry3.pdb
 C:\Users\Пользователь\source\repos\ooptry3\ooptry3\obj\Debug\ooptry3.Form1.resources
+D:\forlinux2\rgr\ooptry3\ooptry3\bin\Debug\ooptry3.exe.config
+D:\forlinux2\rgr\ooptry3\ooptry3\bin\Debug\ooptry3.exe
+D:\forlinux2\rgr\ooptry3\ooptry3\bin\Debug\ooptry3.pdb
+D:\forlinux2\rgr\ooptry3\ooptry3\obj\Debug\ooptry3.csprojAssemblyReference.cache
+D:\forlinux2\rgr\ooptry3\ooptry3\obj\Debug\ooptry3.Form1.resources
+D:\forlinux2\rgr\ooptry3\ooptry3\obj\Debug\ooptry3.Properties.Resources.resources
+D:\forlinux2\rgr\ooptry3\ooptry3\obj\Debug\ooptry3.csproj.GenerateResource.cache
+D:\forlinux2\rgr\ooptry3\ooptry3\obj\Debug\ooptry3.csproj.CoreCompileInputs.cache
+D:\forlinux2\rgr\ooptry3\ooptry3\obj\Debug\ooptry3.exe
+D:\forlinux2\rgr\ooptry3\ooptry3\obj\Debug\ooptry3.pdb

@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.stopb = new System.Windows.Forms.Button();
             this.strartb = new System.Windows.Forms.Button();
@@ -59,6 +61,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label5);
+            this.splitContainer1.Panel1.Controls.Add(this.label4);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
             this.splitContainer1.Panel1.Controls.Add(this.stopb);
             this.splitContainer1.Panel1.Controls.Add(this.strartb);
@@ -69,10 +73,30 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.AutoScroll = true;
             this.splitContainer1.Panel2.Controls.Add(this.pictureBox1);
             this.splitContainer1.Size = new System.Drawing.Size(1305, 562);
             this.splitContainer1.SplitterDistance = 203;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(62, 345);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(55, 26);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "timeforpair\r\n\r\n";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(63, 297);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "label4";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
@@ -161,10 +185,9 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1094, 558);
+            this.pictureBox1.Size = new System.Drawing.Size(3000, 3000);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
@@ -206,6 +229,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
 
